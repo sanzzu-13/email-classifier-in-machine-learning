@@ -91,7 +91,7 @@ def main():
     3. **Model Prediction:** When you input a message and click 'Predict', the model predicts whether it's spam or ham.
     4. **Result Display:** The prediction result is displayed along with a visual indicator (✅ for ham, ❌ for spam).
     """)
-    st.write('Developed By: Sanjaya Kumar Giri')
+    st.write('Developed By Sanjaya Kumar Giri')
     st.write('[GitHub Repository](https://github.com/sanzzu-13)')
 
 if __name__ == "__main__":
