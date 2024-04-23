@@ -35,8 +35,6 @@ def main():
     st.title("📧 Spam or Ham Detection")
     st.markdown("---")
     st.subheader("Detect whether a message is spam or ham")
-     # Add an image with a smaller size
-    st.image("https://media.istockphoto.com/id/1492989285/photo/people-with-warning-notification-and-spam-message-icon-on-mobile-phone.webp?b=1&s=170667a&w=0&k=20&c=eGEqVyp-oenpLl-m_4yAiGapLz6j6gZgnYnZRt1-Z9E=", width=200)
 
     # Add a beautiful background
     st.markdown(
@@ -50,9 +48,6 @@ def main():
         """,
         unsafe_allow_html=True
     )
-
-    # Load the spam image
-    spam_image_path = "spam_image.jpg"
 
     # Check if the model pickle file exists
     if not os.path.exists('spam_ham_model.pkl'):
@@ -96,9 +91,8 @@ def main():
     3. **Model Prediction:** When you input a message and click 'Predict', the model predicts whether it's spam or ham.
     4. **Result Display:** The prediction result is displayed along with a visual indicator (✅ for ham, ❌ for spam).
     """)
-    st.write('Devlop By: Sanjaya Kumar Giri')
+    st.write('Developed By: Sanjaya Kumar Giri')
     st.write('[GitHub Repository](https://github.com/sanzzu-13)')
+
 if __name__ == "__main__":
     main()
-   
-    
