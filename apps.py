@@ -39,7 +39,7 @@ def main():
 
     # Add a beautiful background
     st.markdown(
-        """
+      
         <style>
             body {
                 background-image: url("https://source.unsplash.com/1600x900/?nature,water");
@@ -62,7 +62,7 @@ def main():
                 background-color: #45a049;
             }
         </style>
-        """
+      
     )
 
     # Check if the model pickle file exists
