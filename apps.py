@@ -51,8 +51,8 @@ def main():
 
     # Check if the model pickle file exists
     if not os.path.exists('spam_ham_model.pkl'):
-        # Load the spam.csv dataset
-        data = pd.read_csv('spam.csv')
+        # Load the spams.csv dataset
+        data = pd.read_csv('spams.csv')
         # Assume 'email' is the column containing emails and 'label' is the column containing labels
         if 'email' in data.columns and 'label' in data.columns:
             model, vectorizer = train_model(data['email'], data['label'])
