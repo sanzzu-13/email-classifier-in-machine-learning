@@ -212,7 +212,7 @@ if _name_ == "_main_":
 #             else:
 #                 st.success("✅ This message is predicted to be ham.")
 
-#     # How it works section
+     # How it works section
 #     st.markdown("---")
 #     st.subheader("How it works")
 #     st.write("""
@@ -226,5 +226,5 @@ if _name_ == "_main_":
 #     st.write('Developed By Sanjaya Kumar Giri')
 #     st.write('[GitHub Repository](https://github.com/sanzzu-13)')
 
-# if _name_ == "_main_":
-#     main()
+if __name__ == "__main__":
+    main()
