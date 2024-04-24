@@ -37,9 +37,6 @@ def main():
     st.markdown("---")
     st.subheader("Detect whether a message is spam or ham")
 
-    # GIF image
-   
-
     # Add a beautiful background
     st.markdown(
         """
@@ -65,14 +62,13 @@ def main():
                 background-color: #45a049;
             }
         </style>
-        """,
-        unsafe_allow_html=True
+        """
     )
 
     # Check if the model pickle file exists
     if not os.path.exists('spam_ham_model.pkl'):
         # Load the spam.csv dataset
-        data = pd.read_csv('spams.csv')
+        data = pd.read_csv('spam.csv')
         # Assume 'email' is the column containing emails and 'label' is the column containing labels
         if 'email' in data.columns and 'label' in data.columns:
             model, vectorizer = train_model(data['email'], data['label'])
@@ -98,9 +94,6 @@ def main():
             if prediction == "spam":
                 st.error("❌ This message is predicted to be spam.")
                 st.image("https://media1.tenor.com/m/eDe1TzrQpxUAAAAd/tt.gif", use_column_width=True)
-
-
-
             else:
                 st.success("✅ This message is predicted to be ham.")
                 st.image("https://media.tenor.com/4M47ZSJ7KfQAAAAM/30rock-ham.gif", use_column_width=True)
@@ -123,5 +116,6 @@ def main():
         
         For more information or to contribute, please visit the [GitHub Repository](https://github.com/sanzzu-13).
         """)
-if _name_ == "_main_":
+
+if __name__ == "__main__":
     main()
