@@ -124,4 +124,4 @@ def main():
         For more information or to contribute, please visit the [GitHub Repository](https://github.com/sanzzu-13).
         """)
 if _name_ == "_main_":
-    main()
+    main()
