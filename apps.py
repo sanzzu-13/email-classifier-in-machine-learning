@@ -47,7 +47,6 @@ def main():
             .stButton>button {
                 background-color: #4CAF50;
                 color: white;
-                padding:20px;
                 text-align: center;
                 text-decoration: none;
                 display: inline-block;
