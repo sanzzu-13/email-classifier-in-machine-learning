@@ -42,7 +42,7 @@ def main():
         """
         <style>
             body {
-                background-image: url('https://source.unsplash.com/1600x900/?nature,water');
+                background-image: url('pic.webp');
                 background-size: cover;
             }
             .stButton>button {
@@ -93,7 +93,7 @@ def main():
             prediction = predict(model, vectorizer, message)
             if prediction == "spam":
                 st.error("❌ This message is predicted to be spam.")
-                st.image("https://media1.tenor.com/m/eDe1TzrQpxUAAAAd/tt.gif", use_column_width=True, alt="Spam Detected")
+                st.image("pic.webp", use_column_width=True, alt="Spam Detected")
             else:
                 st.success("✅ This message is predicted to be ham.")
                 st.image("https://media.tenor.com/4M47ZSJ7KfQAAAAM/30rock-ham.gif", use_column_width=True, alt="Ham Detected")
