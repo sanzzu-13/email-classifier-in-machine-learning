@@ -4,7 +4,7 @@ import os
 import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
-
+st.image("pic.webp", use_column_width=True, alt="Ham Detected")
 # Function to train the Naive Bayes model and save it as a pickle file
 def train_model(data, labels):
     vectorizer = CountVectorizer()
