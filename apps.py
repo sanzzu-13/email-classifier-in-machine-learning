@@ -39,29 +39,7 @@ def main():
 
     # Add a beautiful background
     st.markdown(
-        <style>
-            body {
-                background-image: url('https://source.unsplash.com/1600x900/?nature,water');
-                background-size: cover;
-            }
-            .stButton>button {
-                background-color: #4CAF50;
-                color: white;
-                padding: 10px 20px;
-                text-align: center;
-                text-decoration: none;
-                display: inline-block;
-                font-size: 16px;
-                margin: 4px 2px;
-                transition-duration: 0.4s;
-                cursor: pointer;
-                border-radius: 10px;
-            }
-            .stButton>button:hover {
-                background-color: #45a049;
-            }
-        </style>
-    )
+       
 
     # Check if the model pickle file exists
     if not os.path.exists('spam_ham_model.pkl'):
