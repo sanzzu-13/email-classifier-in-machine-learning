@@ -12,7 +12,7 @@ def train_model(data, labels):
     model = MultinomialNB()
     model.fit(X, labels)
 
-    # Save the model as a pickle file
+    # Save the model and vectorizer as a pickle file
     with open('spam_ham_model.pkl', 'wb') as file:
         pickle.dump((model, vectorizer), file)
 
@@ -37,44 +37,27 @@ def main():
     st.markdown("---")
     st.subheader("Detect whether a message is spam or ham")
 
-    # # Add a beautiful background
-    # st.markdown(
-    #     """
-    #     <style>
-    #         body {
-    #             background-image: url('pic.webp');
-    #             background-size: cover;
-    #         }
-    #         .stButton>button {
-    #             background-color: #4CAF50;
-    #             color: white;
-    #             padding: 10px 20px;
-    #             text-align: center;
-    #             text-decoration: none;
-    #             display: inline-block;
-    #             font-size: 16px;
-    #             margin: 4px 2px;
-    #             transition-duration: 0.4s;
-    #             cursor: pointer;
-    #             border-radius: 10px;
-    #         }
-    #         .stButton>button:hover {
-    #             background-color: #45a049;
-    #         }
-    #     </style>
-    #     """
-    # )
-
     # Check if the model pickle file exists
     if not os.path.exists('spam_ham_model.pkl'):
         # Load the spam.csv dataset
-        data = pd.read_csv('spams.csv')
+        try:
+            data = pd.read_csv('spams.csv')
+        except FileNotFoundError:
+            st.error("❌ File 'spams.csv' not found. Please upload the file.")
+            return
+        except Exception as e:
+            st.error(f"❌ Error reading the CSV file: {e}")
+            return
+
         # Assume 'email' is the column containing emails and 'label' is the column containing labels
         if 'email' in data.columns and 'label' in data.columns:
+            # Convert labels to binary values (e.g., spam=1, ham=0)
+            data['label'] = data['label'].apply(lambda x: 1 if x.lower() == 'spam' else 0)
             model, vectorizer = train_model(data['email'], data['label'])
             st.success("✅ Model trained successfully!")
         else:
             st.error("❌ Please make sure the CSV file contains 'email' and 'label' columns.")
+            return
     else:
         # Load the model from the pickle file
         model, vectorizer = load_model()
@@ -91,12 +74,10 @@ def main():
             st.warning("⚠ Please enter a message.")
         else:
             prediction = predict(model, vectorizer, message)
-            if prediction == "spam":
+            if prediction == 1:  # If label is 1, it's spam
                 st.error("❌ This message is predicted to be spam.")
-                st.image("pic.webp", use_column_width=True, alt="Spam Detected")
-            else:
+            else:  # If label is 0, it's ham
                 st.success("✅ This message is predicted to be ham.")
-                # st.image("https://media.tenor.com/4M47ZSJ7KfQAAAAM/30rock-ham.gif", use_column_width=True, alt="Ham Detected")
 
     # How it works section
     with st.expander("How it works"):
@@ -106,7 +87,7 @@ def main():
         1. *Model Training:* The model is trained on a dataset containing email messages labeled as spam or ham.
         2. *Text Processing:* The text data is converted into numerical features using the Bag-of-Words approach.
         3. *Model Prediction:* When you input a message and click 'Predict', the model predicts whether it's spam or ham.
-        4. *Result Display:* The prediction result is displayed along with a visual indicator (✅ for ham, ❌ for spam).
+        4. *Result Display:* The prediction result is displayed with a visual indicator (✅ for ham, ❌ for spam).
         """)
 
     # Developed by section
